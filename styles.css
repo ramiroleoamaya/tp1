@@ -1,0 +1,87 @@
+.body{
+    background-color: rgb(49, 105, 49);
+}
+.header{
+    background-color: rgb(178, 245, 178);
+    display:flexbox;
+    flex-direction: column;
+    justify-items: center;
+    padding: 10px;
+}
+
+.titulo1{
+    font-family: bernard MT condensed;
+    font-size: 25px;
+    
+}
+
+.navegador{
+    background-color: rgb(178, 245, 178) ;
+    text-align: center;
+    font-size: 19px;
+    padding: 15px;
+    margin: 10px;
+    font-family:bernard MT condensed ;
+}
+
+#inicio{
+    background-color:  rgb(178, 245, 178);
+    text-align: center;
+    font-size: 26px;
+    font-family:bernard MT condensed ;
+    padding: 5px;
+    margin: 5px;
+}
+
+.footer{
+    background-color:rgb(178, 245, 178) ;
+    font-weight:bold;
+    text-align: center;
+}
+
+a:hover{
+    color: red;
+}
+
+a:focus{
+    outline: 2px solid orangered;
+}
+
+a:active{
+    color:pink
+}
+
+#productos{
+    background-color:  rgb(178, 245, 178);
+    text-align: center;
+    font-size: 26px;
+    font-family:bernard MT condensed ;
+    padding: 5px;
+    margin: 5px;
+}
+
+#servicios{
+    background-color:  rgb(178, 245, 178);
+    text-align: center;
+    font-size: 26px;
+    font-family:bernard MT condensed ;
+    padding: 5px;
+    margin: 5px;
+}
+
+#contacto{
+    background-color:  rgb(178, 245, 178);
+    text-align: center;
+    font-size: 26px;
+    font-family:bernard MT condensed ;
+    padding: 5px;
+    margin: 5px;
+}
+
+.info-contacto{
+    background-color: rgb(178, 245, 178);
+    display:flexbox;
+    flex-direction: column;
+    justify-items: center;
+    padding: 10px;
+}
