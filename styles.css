@@ -1,6 +1,22 @@
 .body{
     background-color: rgb(49, 105, 49);
 }
+
+.logoamp{
+    width: 200px;
+    animation: aparecer 1s ease-out forwards;
+}
+
+@keyframes aparecer {
+    from {
+      opacity: 0;
+      transform: translateY(20px); 
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0); 
+    }
+  }
 .header{
     background-color: rgb(178, 245, 178);
     display:flexbox;
@@ -12,7 +28,7 @@
 .titulo1{
     font-family: bernard MT condensed;
     font-size: 25px;
-    
+    padding: 30px;
 }
 
 .navegador{
@@ -78,8 +94,12 @@ a:active{
     margin: 5px;
 }
 
+.formulario{
+    padding: 30px;
+}
 .info-contacto{
     background-color: rgb(178, 245, 178);
+    border: rgb(49, 105, 49)solid;
     display:flexbox;
     flex-direction: column;
     justify-items: center;
