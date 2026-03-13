@@ -13,13 +13,23 @@
         <h2>CONTACTO</h2>
         <div class="logo"><img src="green amps1.png" class="logoamp" alt="logo de marca"
             width="200" height="200"></div>
-        <form class="formulario">
-            <label>Nombre: <input type="text"></label><br>
-            <label>E-mail: <input type="email"></label><br>
-            <textarea placeholder="Escribe aquí tu mensaje"></textarea><br>
-            <button type="submit">ENVIAR</button>
-        </form>
-        
+            <form class="formulario">
+                <div class="grupo-control">
+                    <div class="grupo-control label">
+                    <label for="nombre">Nombre:</label>
+                    <input type="text" id="nombre">
+                    </div>
+                <div class="grupo-control input">    
+                <label for="email">E-mail:</label>
+                <input type="text" id="email">
+                     </div>
+                     <div class="grupo-control textarea">
+                <label>Mensaje</label>
+                <textarea for="mensaje" placeholder="escribe aqui tu mensaje"></textarea>
+                <button class="boton-enviar" type="submit">Enviar</button>
+                    </div>
+                </div>
+                </form>
         <div class="info-contacto">
             <p>Email: Greenamps@gmail.com</p>
             <p>Telefono:(011)636-66871</p>
