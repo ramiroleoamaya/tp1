@@ -1,6 +1,9 @@
 .body {
-    background-color: rgb(49, 105, 49);
-    margin: 0;
+    background-color: #B5DECC; 
+    color: #333; 
+}
+.header {
+    background-color:#34454C; 
 }
     
 .logoamp {
@@ -38,7 +41,7 @@
 .navegador, #inicio, #productos, #servicios, #contacto {
     background-color: rgb(178, 245, 178);
     text-align: center;
-    font-size: 25px;
+    font-size: 20px;
     padding: auto 30px;
     margin: 10px;
     display: block;
@@ -114,7 +117,7 @@
 }
 
 .navegador ul li a:hover, .boton-enviar:hover {
-    color: rgb(255, 255, 255);
+    color:#ffc107;
     background-color: rgb(34, 73, 34);
     transition: all 0.3s ease; 
 }
@@ -133,4 +136,41 @@
 .boton-maps:hover {
     background-color: rgb(49, 105, 49);
     color: white;
+}
+
+.navegador ul {
+    list-style-type: none;
+    padding: 0;
+    display: flex; 
+    gap: 20px;   
+}
+
+.navegador ul li a {
+    text-decoration: none;
+    color: green; 
+    font-weight: bold;
+}
+
+
+.navegador ul li a:hover {
+    color: #ffc107;
+}
+
+label {
+    display: block;
+    text-align: center;
+    margin-bottom: 5px;
+}
+
+input, textarea {
+    margin-left: auto;
+    margin-right: auto;
+    display: block;
+}
+
+.link-producto {
+    text-decoration: none; /* Quita el subrayado natural */
+    color: #198754; /* Verde de la marca */
+    font-weight: 500;
+    transition: 0.3s;
 }
