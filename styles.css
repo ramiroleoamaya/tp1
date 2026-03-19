@@ -167,10 +167,3 @@ input, textarea {
     margin-right: auto;
     display: block;
 }
-
-.link-producto {
-    text-decoration: none; /* Quita el subrayado natural */
-    color: #198754; /* Verde de la marca */
-    font-weight: 500;
-    transition: 0.3s;
-}
