@@ -29,6 +29,25 @@
         </div>
     </section>
 
+    <section id="calculadora" class="container py-5 my-5 bg-dark text-white rounded shadow border border-success">
+        <h2 class="text-center text-success mb-4">Calculadora de Presupuesto</h2>
+        <div class="row justify-content-center">
+            <div class="col-md-5">
+                <input type="number" id="precio-amp" class="form-control mb-3" placeholder="Precio del Amp (USD)">
+                <input type="number" id="cantidad-amp" class="form-control mb-3" placeholder="Cantidad">
+                
+                <div class="d-grid gap-2 d-md-flex justify-content-md-center mb-3">
+                    <button id="btn-calcular" class="btn btn-success">Calcular Total</button>
+                    <button id="btn-reset" class="btn btn-outline-secondary">Limpiar</button>
+                </div>
+    
+                <div class="alert alert-dark border-success text-center">
+                    <h4 id="resultado-texto" class="m-0">Total: $0</h4>
+                </div>
+            </div>
+        </div>
+    </section>
+    
     <section id="servicios">
         <h2>SERVICIOS</h2>
         <p>Contamos con servicio técnico<br>

@@ -30,7 +30,7 @@ const productos = [
     {
         id: 4,
         categoria: "bajo",
-        titulo: "100BOX-BASS | 1 x 8' 30W",
+        titulo: "BOX-BASS | 30W",
         subtitulo: "¡El pequeño groove!",
         descripcion: " 30 watts reales de potencia. El pequeño que te hara groovear en lugares reducidos!.Este equipo es perfecto para tocar en departamentos y pequeños ensambles.",
         imagen: "imagenes/ampbajo15.jpeg",
@@ -39,7 +39,7 @@ const productos = [
     {
         id: 5,
         categoria: "bajo",
-        titulo: "BOX-BASS | 1 x 15' 75W",
+        titulo: "BOX-BASS | 75W",
         subtitulo: "¡El gran pequeño!",
         descripcion: " 75 watts reales de potencia.El que te hara sentir presencia en cualquier lugar!.El equipo perfecto para ensayos potentes con tu sonido a la par de la necesidad de un grupo presente y fuerte.",
         imagen: "imagenes/ampbajo75.jpeg",
@@ -48,7 +48,7 @@ const productos = [
     {
         id: 6,
         categoria: "bajo",
-        titulo: "BOX-BASS | 1 x 15' 110W",
+        titulo: "BOX-BASS | 110W",
         subtitulo: "¡El pesado!",
         descripcion: " 110 watts reales de potencia.El que no pasa desapercibido!.Perfecto para escenarios,conciertos,auditorios grandes y estadios!!!.",
         imagen: "imagenes/ampbajo110.jpeg",
@@ -112,3 +112,46 @@ document.addEventListener('DOMContentLoaded', renderizarProductos);
 //addeventlistener le dice que este atento, que viene una orden
 //DOMContentLoaded hace que que el html sea leido en su totalidad antes de ejecutar javascript
 //ejecuta la funcion renderizar productos
+
+// funcion calculadora
+
+// Capturamos los elementos una sola vez 
+const inputPrecio = document.getElementById('precio-amp');
+const inputCantidad = document.getElementById('cantidad-amp');
+const btnCalcular = document.getElementById('btn-calcular');
+const btnReset = document.getElementById('btn-reset');
+const campoResultado = document.getElementById('resultado-texto');
+
+// Funcion de calculo 
+function procesarCalculo() {
+    const p = parseFloat(inputPrecio.value);
+    const c = parseInt(inputCantidad.value);
+
+    // Validación simple
+    if (isNaN(p) || isNaN(c) || c <= 0) {
+        // si cualquiera de estas tres condiciones es verdadera se bloquea is non a number o c menor o igual a 0
+        //mostar aviso en recuadro 
+        campoResultado.innerText = "Ingresa valores válidos";
+        campoResultado.classList.replace('text-white', 'text-danger');
+        // evitar que  se ejecute el codigo siguiente
+        return;
+    }
+
+    const total = p * c;
+    // mostrar el resultado al usuario utilizando Template Literals
+    campoResultado.innerText = `Total: $${total}`;//interpolacion colocar el resultado directamenteen la cadena de texto
+    campoResultado.classList.replace('text-danger', 'text-white');
+}
+
+// Asignación de Eventos 
+// En lugar de onclick en HTML, usamos addEventListener
+btnCalcular.addEventListener('click', procesarCalculo);
+// utilizar addEventListener permite agregar funciones al mismo botón si fuera necesario en el futuro.
+
+
+// Evento para limpiar la pantalla
+btnReset.addEventListener('click', () => {//Función Flecha (Arrow Function).cundo toqu el boton se ejecuta todo lo que esta entre parentesis
+    inputPrecio.value = "";//accedemos al valor
+    inputCantidad.value = "";
+    campoResultado.innerText = "Total: $0";// en resutado muestra un numero una vez reseteado vuelve a 0
+});
