@@ -86,7 +86,7 @@ function renderizarProductos() {
         //Estas comillas inclinadas permiten usar Template Literals que hacen que el codigo sea largo sin que se rompa y se pueden insertar variables directamente
         columna.innerHTML = `
             <div class="card h-100 bg-dark text-white shadow border-success">
-                <img src="${p.imagen}" class="card-img-top p-3" alt="${p.titulo}" style="height: 200px; object-fit: contain;">
+            <img src="${p.imagen}" class="card-img-top p-3 img-miniatura" alt="${p.titulo}" style="height: 200px; object-fit: contain; cursor: pointer;">
                 <div class="card-body text-center d-flex flex-column">
                     <h5 class="text-success">${p.titulo}</h5>
                     <p class="small text-secondary italic">${p.subtitulo}</p>
@@ -154,4 +154,32 @@ btnReset.addEventListener('click', () => {//Función Flecha (Arrow Function).cun
     inputPrecio.value = "";//accedemos al valor
     inputCantidad.value = "";
     campoResultado.innerText = "Total: $0";// en resutado muestra un numero una vez reseteado vuelve a 0
+});
+
+//galeria
+
+const modal = document.getElementById('modal-galeria');
+const imgGrande = document.getElementById('imagen-grande');
+const btnCerrar = document.getElementById('cerrar-modal');
+
+// Usamos "Delegacion de Eventos" para las imagenes que se crean dinamicamente
+document.getElementById('contenedor-dinamico').addEventListener('click', (e) => {
+    // Si lo que clickeamos es una imagen con la clase 'img-miniatura'
+    if (e.target.classList.contains('img-miniatura')) {
+        modal.style.display = "flex"; // Mostramos el modal
+        imgGrande.src = e.target.src; // Pasamos la ruta de la imagen
+        imgGrande.style.maxWidth = "80%"; // Cuidamos el tamaño
+    }
+});
+
+// Evento para cerrar el modal
+btnCerrar.addEventListener('click', () => {
+    modal.style.display = "none";
+});
+
+// Cerrar también si hace clic fuera de la imagen (más comodo para la vista)
+modal.addEventListener('click', (e) => {
+    if (e.target === modal) {
+        modal.style.display = "none";
+    }
 });
