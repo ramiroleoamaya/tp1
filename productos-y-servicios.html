@@ -61,11 +61,35 @@
             Ofrecemos <span>GARANTIA DE POR VIDA</span><br>
             sobre todos nuestros productos.
             </p>
+            
         <p>Ante cualquier duda, consulta<br>
             o sugerencia
             <a href="contacto.html">CONTACTANOS.</a>
-        </p>          
+        </p> 
+        
+        
+        <div class="d-flex gap-2 justify-content-center mt-3">
+            <button class="btn btn-outline-success btn-agregar-pedido" data-titulo="Service Técnico">
+                Solicitar Service
+            </button>
+            <button class="btn btn-outline-success btn-agregar-pedido" data-titulo="Reparación">
+                Consultar Reparación
+            </button>
+        </div>
     </section> 
+    <section id="seccion-tareas" class="container py-5 my-5 bg-dark text-white rounded shadow border border-success">
+        <h2 class="text-center text-success mb-4">Lista de Consultas / Pedidos</h2>
+        <div class="row justify-content-center">
+            <div class="col-md-6">
+                <div class="input-group mb-3">
+                    <input type="text" id="input-tarea" class="form-control" placeholder="Ej: Consultar por BOX-601 30W...">
+                    <button class="btn btn-success" id="btn-agregar">Agregar</button>
+                </div>
+                <ul id="lista-tareas" class="list-group">
+                    </ul>
+            </div>
+        </div>
+    </section>
     <div id="modal-galeria" class="modal-personalizado" style="display: none;">
         <span id="cerrar-modal">&times;</span>
         <img id="imagen-grande" src="" alt="Imagen ampliada">

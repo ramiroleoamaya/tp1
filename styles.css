@@ -199,3 +199,7 @@ input, textarea {
     font-weight: bold;
     cursor: pointer;
 }
+.text-decoration-line-through {
+    text-decoration: line-through !important;
+    opacity: 0.6;
+}

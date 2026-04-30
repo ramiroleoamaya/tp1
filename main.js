@@ -76,7 +76,7 @@ function renderizarProductos() {
     
     //inicia el ciclo
     
-    productos.forEach(p => { //método que toma cada elemento de esta lista, uno por uno
+    productos.forEach(p => { //metodo que toma cada elemento de la lista, uno por uno
         //p es el nombre del producto actual dentro del ciclo
         const columna = document.createElement('div');
         //creamos un elemento en la memoria
@@ -84,25 +84,28 @@ function renderizarProductos() {
         //Aquí ponemos estilos boostrap 
         //Aquí empieza la plantilla de como se vera el producto por dentro.
         //Estas comillas inclinadas permiten usar Template Literals que hacen que el codigo sea largo sin que se rompa y se pueden insertar variables directamente
+        // Dentro de tu forEach en renderizarProductos:
+       // Modificá solo esta parte dentro de renderizarProductos en main_8.js
         columna.innerHTML = `
-            <div class="card h-100 bg-dark text-white shadow border-success">
-            <img src="${p.imagen}" class="card-img-top p-3 img-miniatura" alt="${p.titulo}" style="height: 200px; object-fit: contain; cursor: pointer;">
-                <div class="card-body text-center d-flex flex-column">
-                    <h5 class="text-success">${p.titulo}</h5>
-                    <p class="small text-secondary italic">${p.subtitulo}</p>
-                    <p class="card-text flex-grow-1">${p.descripcion}</p>
-                    <div class="mt-3">
-                        <p class="fw-bold">USD ${p.precio}</p>
-                        <button class="btn btn-success w-100" onclick="alert('Elegiste el ${p.titulo}')">
-                            Consultar
-                        </button>
-                    </div>
+        <div class="card h-100 bg-dark text-white shadow border-success">
+        <img src="${p.imagen}" class="card-img-top p-3 img-miniatura" alt="${p.titulo}" style="height: 200px; object-fit: contain; cursor: pointer;">
+            <div class="card-body text-center d-flex flex-column">
+                <h5 class="text-success">${p.titulo}</h5>
+                <p class="small text-secondary italic">${p.subtitulo}</p>
+                <p class="card-text flex-grow-1">${p.descripcion}</p>
+                <div class="mt-3">
+                    <p class="fw-bold">USD ${p.precio}</p>
+                    <button class="btn btn-success w-100 btn-agregar-pedido" data-titulo="${p.titulo}">
+                    Agregar a pedidos
+                    </button>
                 </div>
             </div>
+        </div>
         `;
-
-        //para que el div aparezca en la página web.
+        //para que el div aparezca en la pagina web.
         contenedor.appendChild(columna);
+        
+        
     });
 }
 
@@ -139,18 +142,18 @@ function procesarCalculo() {
 
     const total = p * c;
     // mostrar el resultado al usuario utilizando Template Literals
-    campoResultado.innerText = `Total: $${total}`;//interpolacion colocar el resultado directamenteen la cadena de texto
+    campoResultado.innerText = `Total: $${total}`;//interpolacion colocar el resultado directamente en la cadena de texto
     campoResultado.classList.replace('text-danger', 'text-white');
 }
 
-// Asignación de Eventos 
+// Asignacion de Eventos 
 // En lugar de onclick en HTML, usamos addEventListener
 btnCalcular.addEventListener('click', procesarCalculo);
-// utilizar addEventListener permite agregar funciones al mismo botón si fuera necesario en el futuro.
+// utilizar addEventListener permite agregar funciones al mismo boton si fuera necesario en el futuro.
 
 
 // Evento para limpiar la pantalla
-btnReset.addEventListener('click', () => {//Función Flecha (Arrow Function).cundo toqu el boton se ejecuta todo lo que esta entre parentesis
+btnReset.addEventListener('click', () => {//Función Flecha (Arrow Function).cuando toque el boton se ejecuta todo lo que esta entre parentesis
     inputPrecio.value = "";//accedemos al valor
     inputCantidad.value = "";
     campoResultado.innerText = "Total: $0";// en resutado muestra un numero una vez reseteado vuelve a 0
@@ -177,9 +180,86 @@ btnCerrar.addEventListener('click', () => {
     modal.style.display = "none";
 });
 
-// Cerrar también si hace clic fuera de la imagen (más comodo para la vista)
+// Cerrar tambien si hace clic fuera de la imagen (mas comodo para la vista)
 modal.addEventListener('click', (e) => {
     if (e.target === modal) {
         modal.style.display = "none";
     }
 });
+
+//lista de tareas
+
+const inputTarea = document.getElementById('input-tarea');
+const btnAgregar = document.getElementById('btn-agregar');
+const listaTareas = document.getElementById('lista-tareas');
+
+// Funcion para añadir tarea
+btnAgregar.addEventListener('click', () => {
+    const texto = inputTarea.value.trim();
+    
+    if (texto !== "") {
+        const nuevaTarea = document.createElement('li');
+        nuevaTarea.className = "list-group-item d-flex justify-content-between align-items-center bg-secondary text-white border-success";
+        
+        // El contenido de la tarea con botones de "completar" y "eliminar"
+        nuevaTarea.innerHTML = `
+            <span class="texto-tarea">${texto}</span>
+            <div>
+                <button class="btn btn-sm btn-outline-light me-2 btn-completar">✔</button>
+                <button class="btn btn-sm btn-danger btn-eliminar">X</button>
+            </div>
+        `;
+        
+        listaTareas.appendChild(nuevaTarea);
+        inputTarea.value = ""; // Limpiar input
+    }
+});
+
+// eventos para completar y eliminar
+listaTareas.addEventListener('click', (e) => {
+    // Si clickea el boton de completar
+    if (e.target.classList.contains('btn-completar')) {
+        const spanTexto = e.target.parentElement.parentElement.querySelector('.texto-tarea');
+        spanTexto.classList.toggle('text-decoration-line-through');
+        spanTexto.classList.toggle('text-muted');
+    }
+    
+    // Si clickea el boton de eliminar
+    if (e.target.classList.contains('btn-eliminar')) {
+        e.target.parentElement.parentElement.remove();
+    }
+});
+
+// funcion para agregar tareas a la lista
+function agregarTareaDesdeCatalogo(texto) {
+    const listaTareas = document.getElementById('lista-tareas');
+    const nuevaTarea = document.createElement('li');
+    nuevaTarea.className = "list-group-item d-flex justify-content-between align-items-center bg-secondary text-white border-success mb-2 shadow-sm";
+    
+    nuevaTarea.innerHTML = `
+        <span class="texto-tarea">Pedido: ${texto}</span>
+        <div>
+            <button class="btn btn-sm btn-outline-light me-2 btn-completar">✔</button>
+            <button class="btn btn-sm btn-danger btn-eliminar">X</button>
+        </div>
+    `;
+    listaTareas.appendChild(nuevaTarea);
+    nuevaTarea.scrollIntoView({ behavior: 'smooth' }); 
+    console.log("Desplazando la vista hacia el nuevo pedido...[cite: 9]");      
+}
+
+// En lugar de 'contenedor-dinamico', escuchamos en todo el documento
+document.onclick = function(e) {
+    // Verificamos si lo que clickeamos tiene la clase de nuestros botones
+    if (e.target.classList.contains('btn-agregar-pedido')) {
+        const itemSeleccionado = e.target.getAttribute('data-titulo');
+        
+        // verificacion en consola
+        console.clear();
+        console.log("--- Señal Captada ---");
+        console.log("Se agregó a la lista: " + itemSeleccionado);
+        console.log("Ubicación del clic: " + e.target.parentElement.className);
+
+        agregarTareaDesdeCatalogo(itemSeleccionado);
+    }
+};
