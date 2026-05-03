@@ -1,3 +1,5 @@
+
+// creacion de objetos
 // Primero hay que realizar la base de datos de productos que son los objetos creados.
 const productos = [
     {
@@ -263,3 +265,34 @@ document.onclick = function(e) {
         agregarTareaDesdeCatalogo(itemSeleccionado);
     }
 };
+//capturar boton "confirmar y enviar a contacto"
+const btnEnviarContacto = document.getElementById('btn-enviar-contacto');
+
+if (btnEnviarContacto) {
+    btnEnviarContacto.addEventListener('click', () => {
+        const items = document.querySelectorAll('#lista-tareas li .texto-tarea');
+        
+        // si no hay nada en la lista, le avisamos al usuario
+        if (items.length === 0) {
+            alert("Tu lista está vacía. ¡Agregá algún equipo o consulta primero!");
+            return;
+        }
+
+        let pedidoTexto = "Hola Green Amps! Me interesa consultar por:\n";
+        
+        items.forEach((item, index) => {
+            pedidoTexto += `- ${item.textContent}\n`;
+        });
+
+        // guardamos la lista en la memoria del navegador
+        localStorage.setItem('pedidoPendiente', pedidoTexto);
+
+        // verificamos en la consola que se guardo correctamente
+        console.clear();
+        console.log("--- Pedido guardado en LocalStorage ---");
+        console.log(localStorage.getItem('pedidoPendiente'));
+
+        // redirigimos a la pagina de contacto
+        window.location.href = "contacto.html";
+    });
+}
